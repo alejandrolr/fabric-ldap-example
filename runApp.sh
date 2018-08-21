@@ -51,7 +51,7 @@ function installNodeModules() {
 		echo "============== node modules installed already ============="
 	else
 		echo "============== Installing node modules ============="
-		npm install
+		cd fabric-sdk-with-ldap && npm install
 	fi
 	echo
 }
