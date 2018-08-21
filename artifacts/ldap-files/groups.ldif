@@ -1,0 +1,10 @@
+dn: cn=User,ou=groups,dc=example,dc=com
+objectClass: groupOfNames
+cn: User
+description: All hyperledeger fabric users
+member: uid=rootadmin,dc=example,dc=com
+member: uid=admin,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+member: uid=revoker,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+member: uid=nonrevoker,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+member: uid=notadmin,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+member: uid=expiryUser,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com

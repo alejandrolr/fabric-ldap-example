@@ -1,0 +1,23 @@
+#
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+dn: dc=hyperledeger,dc=example,dc=com
+objectClass: top
+objectClass: domain
+dc: hyperledeger
+
+dn: ou=groups,dc=example,dc=com
+objectclass: OrganizationalUnit
+ou: groups
+
+dn: ou=fabric,dc=hyperledeger,dc=example,dc=com
+objectClass: top
+objectClass: OrganizationalUnit
+ou: fabric
+
+dn: ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+objectClass: top
+objectClass: OrganizationalUnit
+ou: users
