@@ -32,8 +32,38 @@ Inside **fabric-sdk-with-ldap** there are several files to interact with the net
 
 ### 3. Register new users
 
-To register new users in the network, an LDAP administrator will have to create this entry. Some examples are included in artifacts/ldap-files/init-ldap-structure.sh.
+To register new users in the network, an LDAP administrator will have to create this entry. One example is included in artifacts/ldap-files.
 
 The steps are:
-+ Create a LDIF file
-+ Add to the server. Connect to the openldap container `docker exec -it openldap bash` and execute `ldapadd -H ldap://localhost -D cn=admin,dc=example,dc=com -w admin -f add-users.ldif`
++ Create a LDIF file with the new user info (new_user.ldif):
+```
+# User account
+dn: uid=alejandro,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: inetOrgPerson
+uid: alejandro
+cn: admin
+sn: Hyperledeger
+givenName: alejandro
+o: Hyperledger
+ou: Fabric
+st: North Carolina
+uidNumber: 10002
+gidNumber: 10002
+mail: alejandro@hyperledeger.example.com
+loginShell: /bin/bash
+homeDirectory: /home/alejandro
+userPassword: alejandropw
+```
++ Add this new entry `ldapadd -H ldap://localhost -D cn=admin,dc=example,dc=com -w admin -f /home/ldap-files/new_user.ldif`
++ Create a new LDIF file (add_newuser_to_group.ldif) to add this user to the existing group:
+```
+dn: cn=User,ou=groups,dc=example,dc=com
+changetype: modify
+add: member
+member: uid=alejandro,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
+```
++ Modify the existing group `ldapmodify -xcWD "cn=admin,dc=example,dc=com" -f add_newuser_to_group.ldif`
+
+> NOTE: you can use phpLDAPadmin to do this task manually.
