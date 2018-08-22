@@ -2,3 +2,4 @@ package*.json
 node_modules
 .DS_Store
 hfc-*
+artifacts/fabric-ca-files/fabric-ca-server.db
