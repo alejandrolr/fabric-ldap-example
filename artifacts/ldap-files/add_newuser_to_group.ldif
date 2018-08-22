@@ -1,0 +1,4 @@
+dn: cn=User,ou=groups,dc=example,dc=com
+changetype: modify
+add: member
+member: uid=alejandro,ou=users,ou=fabric,dc=hyperledeger,dc=example,dc=com
